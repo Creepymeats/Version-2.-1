@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Karina's Clean Living | Home Cleaning & Organizing — Crockett, CA</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --sand: #e8e0d4;
+      --linen: #f4f0ea;
+      --warm-white: #faf8f5;
+      --stone: #b5a899;
+      --bark: #7a6a5a;
+      --earth: #5c4a38;
+      --charcoal: #2c2622;
+      --sage: #8a9e82;
+      --sage-light: #c4cebf;
+      --cream: #f0ebe3;
+      --text: #3a3028;
+      --text-light: #7a6e64;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--warm-white);
+      color: var(--text);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    /* ── NAVIGATION ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.4rem 4rem;
+      background: rgba(250, 248, 245, 0.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(181,168,153,0.2);
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      letter-spacing: 0.04em;
+      color: var(--earth);
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2.8rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--bark);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover { color: var(--earth); }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 8rem 2rem 5rem;
+      background-color: var(--charcoal);
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1600&q=80');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.22;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(44,38,34,0.6) 0%, rgba(44,38,34,0.4) 60%, rgba(44,38,34,0.8) 100%);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+    .hero-eyebrow {
+      font-size: 0.68rem;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--sage-light);
+      margin-bottom: 1.8rem;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.3s forwards;
+    }
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 7vw, 6.5rem);
+      font-weight: 400;
+      line-height: 1.0;
+      color: var(--warm-white);
+      margin-bottom: 0.15em;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.6s forwards;
+    }
+    .hero-title em {
+      font-style: italic;
+      color: var(--sand);
+    }
+    .hero-rule {
+      width: 60px;
+      height: 1px;
+      background: var(--stone);
+      margin: 2rem auto;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.85s forwards;
+    }
+    .hero-tagline {
+      font-size: 0.78rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--sand);
+      margin-bottom: 3rem;
+      opacity: 0;
+      animation: fadeUp 0.9s 1s forwards;
+    }
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 0.9s 1.2s forwards;
+    }
+    .btn-primary {
+      padding: 1rem 2.8rem;
+      background: var(--earth);
+      color: var(--warm-white);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.3s;
+    }
+    .btn-primary:hover { background: var(--bark); transform: translateY(-2px); }
+    .btn-secondary {
+      padding: 1rem 2.8rem;
+      background: transparent;
+      color: var(--sand);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 1px solid rgba(232,224,212,0.45);
+      cursor: pointer;
+      transition: background 0.3s, border-color 0.3s;
+    }
+    .btn-secondary:hover {
+      background: rgba(232,224,212,0.08);
+      border-color: var(--sand);
+    }
+    .scroll-hint {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+      opacity: 0;
+      animation: fadeUp 0.9s 1.8s forwards;
+    }
+    .scroll-hint span {
+      font-size: 0.6rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--stone);
+    }
+    .scroll-line {
+      width: 1px; height: 36px;
+      background: linear-gradient(to bottom, var(--stone), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 1; }
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── SECTION BASE ── */
+    section { position: relative; }
+    .section-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 2.5rem;
+    }
+    .section-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-bottom: 1rem;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.9rem, 3.5vw, 2.8rem);
+      font-weight: 400;
+      color: var(--charcoal);
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+    }
+    .section-body {
+      font-size: 0.95rem;
+      line-height: 1.9;
+      color: var(--text-light);
+      max-width: 580px;
+    }
+    .thin-rule {
+      width: 40px;
+      height: 1px;
+      background: var(--stone);
+      margin: 1.5rem 0;
+    }
+
+    /* ── ABOUT ── */
+    #about {
+      padding: 9rem 0;
+      background: var(--warm-white);
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 7rem;
+      align-items: center;
+    }
+    .about-image-block {
+      position: relative;
+    }
+    .about-image-main {
+      width: 100%;
+      aspect-ratio: 4/5;
+      background: var(--sand);
+      overflow: hidden;
+    }
+    .about-image-main img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .about-image-accent {
+      position: absolute;
+      bottom: -2.5rem;
+      right: -2.5rem;
+      width: 55%;
+      aspect-ratio: 1;
+      background: var(--cream);
+      border: 8px solid var(--warm-white);
+      overflow: hidden;
+    }
+    .about-image-accent img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--sand);
+      margin-top: 3.5rem;
+      border: 1px solid var(--sand);
+    }
+    .stat-card {
+      background: var(--warm-white);
+      padding: 1.6rem 1.4rem;
+      text-align: center;
+    }
+    .stat-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      color: var(--earth);
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+    .stat-label {
+      font-size: 0.62rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-light);
+    }
+
+    /* ── SERVICES ── */
+    #services {
+      padding: 9rem 0;
+      background: var(--linen);
+    }
+    .services-header {
+      text-align: center;
+      margin-bottom: 5rem;
+    }
+    .services-header .thin-rule { margin: 1.5rem auto; }
+    .services-header .section-body { margin: 0 auto; }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--sand);
+      border: 1px solid var(--sand);
+    }
+    .service-card {
+      background: var(--warm-white);
+      padding: 2.8rem 2.2rem;
+      transition: background 0.3s;
+    }
+    .service-card:hover { background: var(--cream); }
+    .service-icon {
+      font-size: 1.6rem;
+      margin-bottom: 1.4rem;
+      display: block;
+    }
+    .service-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      font-weight: 400;
+      color: var(--charcoal);
+      margin-bottom: 0.9rem;
+    }
+    .service-desc {
+      font-size: 0.88rem;
+      line-height: 1.8;
+      color: var(--text-light);
+    }
+    .service-price {
+      display: inline-block;
+      margin-top: 1.4rem;
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--bark);
+      border-bottom: 1px solid var(--stone);
+      padding-bottom: 2px;
+    }
+
+    /* ── PHILOSOPHY ── */
+    #philosophy {
+      padding: 9rem 0;
+      background: var(--charcoal);
+    }
+    .philosophy-inner {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 6rem;
+      align-items: center;
+    }
+    .philosophy-quote {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: clamp(1.5rem, 2.5vw, 2rem);
+      line-height: 1.6;
+      color: var(--sand);
+      border-left: 2px solid var(--bark);
+      padding-left: 2rem;
+    }
+    .philosophy-text p {
+      font-size: 0.92rem;
+      line-height: 1.95;
+      color: rgba(244,240,234,0.65);
+      margin-bottom: 1.5rem;
+    }
+    .pillars {
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+      margin-top: 2rem;
+    }
+    .pillar {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .pillar-dot {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--sage);
+      flex-shrink: 0;
+    }
+    .pillar-text {
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(244,240,234,0.75);
+    }
+    #philosophy .section-label { color: var(--sage); }
+    #philosophy .section-title { color: var(--sand); }
+
+    /* ── TESTIMONIALS ── */
+    #testimonials {
+      padding: 9rem 0;
+      background: var(--warm-white);
+    }
+    .testimonials-header { text-align: center; margin-bottom: 4.5rem; }
+    .testimonials-header .thin-rule { margin: 1.5rem auto; }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+    .testimonial-card {
+      padding: 2.5rem 2rem;
+      background: var(--linen);
+      border-top: 2px solid var(--sage-light);
+    }
+    .testimonial-stars {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      color: var(--bark);
+      margin-bottom: 1.2rem;
+    }
+    .testimonial-text {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1rem;
+      line-height: 1.8;
+      color: var(--text);
+      margin-bottom: 1.5rem;
+    }
+    .testimonial-author {
+      font-size: 0.65rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--text-light);
+    }
+
+    /* ── CONTACT ── */
+    #contact {
+      padding: 9rem 0;
+      background: var(--linen);
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 6rem;
+      align-items: start;
+    }
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      margin-top: 2.5rem;
+    }
+    .contact-item {
+      display: flex;
+      gap: 1.2rem;
+      align-items: flex-start;
+    }
+    .contact-item-icon {
+      font-size: 1rem;
+      margin-top: 0.15rem;
+      flex-shrink: 0;
+    }
+    .contact-item-text {
+      font-size: 0.9rem;
+      line-height: 1.7;
+      color: var(--text-light);
+    }
+    .contact-item-text strong {
+      display: block;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.62rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--bark);
+      font-weight: 500;
+      margin-bottom: 0.3rem;
+    }
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+    .form-group { display: flex; flex-direction: column; gap: 0.5rem; }
+    .form-label {
+      font-size: 0.62rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--bark);
+    }
+    .form-input, .form-textarea {
+      background: var(--warm-white);
+      border: 1px solid var(--sand);
+      border-bottom: 1px solid var(--stone);
+      color: var(--text);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 300;
+      padding: 0.9rem 1rem;
+      outline: none;
+      transition: border-color 0.3s;
+      width: 100%;
+    }
+    .form-input:focus, .form-textarea:focus {
+      border-color: var(--bark);
+    }
+    .form-textarea { resize: vertical; min-height: 120px; }
+    .form-input::placeholder, .form-textarea::placeholder {
+      color: var(--stone);
+    }
+    .contact-form .btn-primary { margin-top: 0.5rem; cursor: pointer; border: none; }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 3rem 2rem;
+      background: var(--charcoal);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.9rem;
+      text-align: center;
+      border-top: 1px solid rgba(181,168,153,0.15);
+    }
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: var(--sand);
+      letter-spacing: 0.04em;
+    }
+    .footer-tagline {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 0.88rem;
+      color: var(--stone);
+    }
+    .footer-copy {
+      font-size: 0.65rem;
+      letter-spacing: 0.14em;
+      color: rgba(181,168,153,0.45);
+      margin-top: 0.4rem;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 1.2rem 1.8rem; }
+      .nav-links { gap: 1.5rem; }
+      .about-grid, .philosophy-inner, .contact-grid { grid-template-columns: 1fr; gap: 3.5rem; }
+      .services-grid { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .about-image-accent { display: none; }
+    }
+    @media (max-width: 600px) {
+      nav { padding: 1rem 1.2rem; }
+      .nav-links { display: none; }
+      .about-stats { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav>
+    <a href="#" class="nav-logo">Karina's Clean Living</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#philosophy">Philosophy</a></li>
+      <li><a href="#testimonials">Reviews</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Crockett, California &nbsp;·&nbsp; Est. 2008</p>
+      <h1 class="hero-title">Professional<br><em>Home Organizer</em><br>& Housekeeper</h1>
+      <div class="hero-rule"></div>
+      <p class="hero-tagline">Abundance Grows Where Energy Flows</p>
+      <div class="hero-cta">
+        <a href="#contact" class="btn-primary">Request a Cleaning</a>
+        <a href="#services" class="btn-secondary">View Services</a>
+      </div>
+    </div>
+    <div class="scroll-hint">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-inner">
+      <div class="about-grid">
+        <div class="about-image-block">
+          <div class="about-image-main">
+            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80" alt="Organized home" />
+          </div>
+          <div class="about-image-accent">
+            <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&q=80" alt="Clean kitchen" />
+          </div>
+          <div class="about-stats">
+            <div class="stat-card">
+              <span class="stat-number">~20</span>
+              <span class="stat-label">Years of Service</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number">★★★★★</span>
+              <span class="stat-label">Yelp Rated</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number">100%</span>
+              <span class="stat-label">Woman Owned</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number">1:1</span>
+              <span class="stat-label">Same Cleaner, Always</span>
+            </div>
+          </div>
+        </div>
+        <div>
+          <p class="section-label">About Karina</p>
+          <h2 class="section-title">A Trusted Presence<br>In Your Home</h2>
+          <div class="thin-rule"></div>
+          <p class="section-body">
+            Karina has been bringing clarity, calm, and deep-clean excellence to homes across the East Bay for nearly twenty years. What sets her apart isn't just her meticulous attention to detail — it's the trust she builds with every single client.
+          </p>
+          <br>
+          <p class="section-body">
+            When you book with Karina's Clean Living, you get <em>Karina</em>. The same reliable, skilled, English-speaking professional comes to your home each visit — no strangers, no surprises, no shortcuts.
+          </p>
+          <br>
+          <p class="section-body">
+            Chemical-free and eco-conscious options are available, and Karina is happy to use the products you prefer. Your home, your standards.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="section-inner">
+      <div class="services-header">
+        <p class="section-label">What Karina Offers</p>
+        <h2 class="section-title">Services</h2>
+        <div class="thin-rule"></div>
+        <p class="section-body">From routine refreshes to deep resets, every service is tailored to your home and your life.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <span class="service-icon">🌿</span>
+          <h3 class="service-name">Regular Housekeeping</h3>
+          <p class="service-desc">Weekly, bi-weekly, or monthly visits to maintain a consistently clean and peaceful living space. Surfaces, floors, bathrooms, kitchens — all cared for with precision.</p>
+          <span class="service-price">3 hrs · $180 and up</span>
+        </div>
+        <div class="service-card">
+          <span class="service-icon">✨</span>
+          <h3 class="service-name">Deep Cleaning</h3>
+          <p class="service-desc">A thorough, top-to-bottom cleanse of your home. Ideal for seasonal resets, move-ins, or any time you want your space to feel genuinely renewed.</p>
+          <span class="service-price">By quote</span>
+        </div>
+        <div class="service-card">
+          <span class="service-icon">🏡</span>
+          <h3 class="service-name">Professional Home Organizing</h3>
+          <p class="service-desc">More than cleaning — Karina helps you reclaim your space. Decluttering, organizing, and creating systems so your home supports the life you want to live.</p>
+          <span class="service-price">3 hrs · $200 and up</span>
+        </div>
+        <div class="service-card">
+          <span class="service-icon">📦</span>
+          <h3 class="service-name">Move-In / Move-Out</h3>
+          <p class="service-desc">Starting fresh or closing a chapter — either way, you deserve a spotless transition. Karina handles the cleaning so you can focus on the move.</p>
+          <span class="service-price">3 hrs · $400 and up</span>
+        </div>
+        <div class="service-card">
+          <span class="service-icon">🌱</span>
+          <h3 class="service-name">Eco-Friendly Cleaning</h3>
+          <p class="service-desc">Chemical-free and natural product options available for families, pets, and those with sensitivities. Clean living, in every sense of the word.</p>
+          <span class="service-price">Available on request</span>
+        </div>
+        <div class="service-card">
+          <span class="service-icon">🔮</span>
+          <h3 class="service-name">Home Organizing & Energy Clearing</h3>
+          <p class="service-desc">If you have areas overwhelmed with stagnant clutter and stuck energy, Karina combines deep physical cleaning with intentional space-clearing so your home doesn't just look clean — it <em>feels</em> clean.</p>
+          <span class="service-price">By quote</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHILOSOPHY -->
+  <section id="philosophy">
+    <div class="section-inner">
+      <div class="philosophy-inner">
+        <div>
+          <p class="section-label">Karina's Philosophy</p>
+          <h2 class="section-title" style="color:var(--sand);">Experienced &<br><em>Creative</em> Home Care</h2>
+          <div class="thin-rule" style="background:var(--bark);"></div>
+          <p class="philosophy-quote">
+            Abundance grows where energy flows — and energy flows best in a clean, clear, cared-for space.
+          </p>
+        </div>
+        <div class="philosophy-text">
+          <p>
+            Karina's approach to cleaning goes beyond surfaces. She believes the physical environment is a reflection of — and an influence on — our inner world. When your home is truly clean, life opens up. Clarity returns. You breathe easier.
+          </p>
+          <p>
+            Whether you're a busy professional, a parent, or simply someone who deserves help maintaining a healthy, beautiful space, Karina meets you exactly where you are.
+          </p>
+          <div class="pillars">
+            <div class="pillar"><div class="pillar-dot"></div><span class="pillar-text">Detail-Oriented & Thorough</span></div>
+            <div class="pillar"><div class="pillar-dot"></div><span class="pillar-text">Reliable — Same Person, Every Time</span></div>
+            <div class="pillar"><div class="pillar-dot"></div><span class="pillar-text">Trustworthy & Respectful of Your Space</span></div>
+            <div class="pillar"><div class="pillar-dot"></div><span class="pillar-text">Eco-Conscious Options Available</span></div>
+            <div class="pillar"><div class="pillar-dot"></div><span class="pillar-text">Personalized to Your Preferences</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="testimonials">
+    <div class="section-inner">
+      <div class="testimonials-header">
+        <p class="section-label">Client Love</p>
+        <h2 class="section-title">What People Are Saying</h2>
+        <div class="thin-rule"></div>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"Do yourself a favor and do that spring cleaning purge & get help getting organized with Karina! She is an absolute gem — thorough, warm, and completely trustworthy."</p>
+          <span class="testimonial-author">— Yelp Reviewer, Crockett CA</span>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"She does such a great job and has the most pleasant personality. I always feel so comfortable knowing she's in my home. Highly recommend!"</p>
+          <span class="testimonial-author">— Yelp Reviewer, East Bay CA</span>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"It's so rare to find someone this reliable and detail-oriented. Karina doesn't just clean — she transforms the energy of the whole space. I look forward to every visit."</p>
+          <span class="testimonial-author">— Returning Client, Contra Costa County</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-inner">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <p class="section-label">Reach Out</p>
+          <h2 class="section-title">Let's Make Your<br>Home Shine</h2>
+          <div class="thin-rule"></div>
+          <p class="section-body">Ready to reclaim your space? Reach out for a free quote or to schedule your first visit. Karina personally handles all inquiries — call, text, or fill out the form.</p>
+          <div class="contact-details">
+            <div class="contact-item">
+              <span class="contact-item-icon">📞</span>
+              <div class="contact-item-text">
+                <strong>Phone / Text</strong>
+                (510) 691-3611
+              </div>
+            </div>
+            <div class="contact-item">
+              <span class="contact-item-icon">📍</span>
+              <div class="contact-item-text">
+                <strong>Location</strong>
+                Crockett, CA 94525<br>
+                Serving the Greater East Bay
+              </div>
+            </div>
+            <div class="contact-item">
+              <span class="contact-item-icon">🕐</span>
+              <div class="contact-item-text">
+                <strong>Hours</strong>
+                Monday – Friday: 9am – 5pm<br>
+                Saturday & Sunday: By appointment
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <form class="contact-form" onsubmit="handleSubmit(event)">
+            <div class="form-group">
+              <label class="form-label">Your Name</label>
+              <input type="text" class="form-input" placeholder="Full name" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Phone or Email</label>
+              <input type="text" class="form-input" placeholder="Best way to reach you" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Service Interested In</label>
+              <input type="text" class="form-input" placeholder="e.g. Regular cleaning, deep clean, organizing..." />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Message</label>
+              <textarea class="form-textarea" placeholder="Tell Karina a bit about your space and what you need..."></textarea>
+            </div>
+            <button type="submit" class="btn-primary">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">Karina's Clean Living</div>
+    <p class="footer-tagline">Abundance Grows Where Energy Flows</p>
+    <p class="footer-copy">© 2025 Karina's Clean Living · Crockett, CA · Woman-Owned Business · Est. 2008</p>
+  </footer>
+
+  <script>
+    function handleSubmit(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('button[type="submit"]');
+      btn.textContent = 'Message Sent';
+      btn.style.background = 'var(--sage)';
+      btn.disabled = true;
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.service-card, .stat-card, .testimonial-card').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(el);
+    });
+  </script>
+
+</body>
+</html>
